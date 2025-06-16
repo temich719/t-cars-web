@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 import { navElements } from '../data';
 import NavElement from './NavElement';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import SearchCars from './SearchCars';
 
 const NavContainer = styled.div`
   background-color: #8b4fc7;
@@ -25,6 +27,7 @@ const NavElementsContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 70px;
+  margin-right: 3%;
 `
 
 const AppName = styled.div`
@@ -35,14 +38,17 @@ const AppName = styled.div`
   right: 4%;
 `
 
-export default function Navbar() {
+export default function Navbar({ carsForRender, setSearchCarsResult, allCars }) {
   return (
-    <NavContainer>
-      <Logo>@Temich 719</Logo>
-      <NavElementsContainer>
-        {navElements.map(item => <NavElement key={item} name={item} />)}
-      </NavElementsContainer>
-      <AppName>T-Cars</AppName>
-    </NavContainer>
+    <div style={{ position: 'fixed ', width: "100%" }}>
+      <NavContainer>
+        <Logo>@Temich 719</Logo>
+        <NavElementsContainer>
+          {navElements.map(item => <NavElement key={item} name={item} />)}
+        </NavElementsContainer>
+        <AppName>T-Cars</AppName>
+      </NavContainer>
+      <SearchCars carsForRender={carsForRender} setSearchCarsResult={setSearchCarsResult} allCars={allCars} />
+    </div>
   );
 }

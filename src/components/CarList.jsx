@@ -1,5 +1,4 @@
 import { styled } from 'styled-components'
-import { carList } from '../data'
 import CarElement from './CarElement'
 
 const CarsCardContainer = styled.div`
@@ -12,7 +11,7 @@ const CarsCardContainer = styled.div`
 const CarsCard = styled.div`
     width: 70%;
     height: auto;
-    margin: 2% 0;
+    margin: 10% 0;
     border: none;
     border-radius: 20px;
     background-color: white;
@@ -22,7 +21,7 @@ const CarsCard = styled.div`
     align-items: center;
 `
 
-export default function CarList() {
+export default function CarList({ carList }) {
     return (
         <CarsCardContainer>
             <CarsCard>

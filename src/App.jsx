@@ -1,13 +1,9 @@
-import Navbar from './components/Navbar';
 import './App.css';
-import CarList from './components/CarList';
+import CarPage from './pages/CarPage';
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <CarList />
-    </>
+    <CarPage />
   )
 }
 

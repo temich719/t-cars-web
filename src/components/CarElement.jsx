@@ -1,12 +1,17 @@
 import { styled } from 'styled-components'
 
 const CarContainer = styled.div`
-    width: 98%;
+    width: 100%;
     height: 28vh;
     border-bottom: 2px solid #d3cece;
     display: flex;
     align-items: center;
     margin: 0.5% 0 0.5 0%;
+
+    &:hover {
+        background-color: whitesmoke;
+        cursor: pointer;
+    }
 `
 
 const CarImageContainer = styled.div`
