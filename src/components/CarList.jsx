@@ -21,11 +21,17 @@ const CarsCard = styled.div`
     align-items: center;
 `
 
-export default function CarList({ carList }) {
+export default function CarList({ carList, changeIsFavoriteByCarId }) {
     return (
         <CarsCardContainer>
             <CarsCard>
-                {carList.map(car => <CarElement key={car.name} car={car} />)}
+                {carList.map(car =>
+                    <CarElement
+                        key={car.name}
+                        car={car}
+                        changeIsFavoriteByCarId={changeIsFavoriteByCarId}
+                    />
+                )}
             </CarsCard>
         </CarsCardContainer>
     )

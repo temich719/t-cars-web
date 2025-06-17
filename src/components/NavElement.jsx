@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import { Link, Outlet } from 'react-router-dom'
 
 const NavButton = styled.div`
     background-color: inherit;
@@ -15,6 +16,8 @@ const NavButton = styled.div`
 
 export default function NavElement({ name }) {
     return (
-        <NavButton>{name}</NavButton>
+        <Link to={`/${name.toLowerCase()}`} style={{ textDecoration: "none" }}>
+            <NavButton>{name}</NavButton>
+        </Link>
     )
 }

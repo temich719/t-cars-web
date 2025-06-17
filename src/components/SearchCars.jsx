@@ -34,6 +34,7 @@ export default function SearchCars({ carsForRender, setSearchCarsResult, allCars
         if (searchQuery.trim() === "") {
             setSearchCarsResult(allCars);
         } else {
+            //todo if empty see from all cars
             setSearchCarsResult(carsForRender.filter(car => car.name.toLowerCase().includes(searchQuery.toLowerCase())));
         }
     }, [searchQuery])

@@ -1,4 +1,6 @@
-import { styled } from 'styled-components'
+import { styled, keyframes } from 'styled-components'
+import { FcLikePlaceholder, FcLike } from "react-icons/fc";
+import { useState } from 'react';
 
 const CarContainer = styled.div`
     width: 100%;
@@ -55,6 +57,8 @@ const CarDescription = styled.div`
     width: 100%;
     font-size: 2rem;
     color: grey;
+    display: flex;
+    justify-content: space-between;
 `
 
 const CarName = styled.div`
@@ -73,7 +77,38 @@ const CarPrice = styled.div`
     margin-right: 5%;
 `
 
-export default function CarElement(props) {
+const favoriteJumpAnim = keyframes`
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+`
+
+const AnimatedLikeIcon = styled(FcLike)`
+    font-size: 40px;
+    margin-right: 8%;
+    animation: ${favoriteJumpAnim} 0.3s ease 1;
+`
+
+//todo icon z-index
+export default function CarElement({ changeIsFavoriteByCarId, ...props }) {
+
+    const [isFavorite, setIsFavorite] = useState(props.car.isFavorite);
+
+    const addCarToFavorites = (carId) => {
+        setIsFavorite(true);
+        changeIsFavoriteByCarId(carId, true);
+    }
+
+    const deleteCarFromFavorites = (carId) => {
+        setIsFavorite(false)
+        changeIsFavoriteByCarId(carId, false)
+    }
+
+    console.log(`${props.car.name} = ${props.car.isFavorite}`);
+
     return (
         <CarContainer>
             <CarImageContainer>
@@ -86,6 +121,13 @@ export default function CarElement(props) {
                 </CarMainData>
                 <CarDescription>
                     {props.car.description}
+                    {props.car.isFavorite === false ?
+                        <FcLikePlaceholder
+                            style={{ fontSize: "40px", marginRight: "8%", zIndex: 1 }}
+                            onClick={() => addCarToFavorites(props.car.id)}
+                        /> :
+                        <AnimatedLikeIcon onClick={() => deleteCarFromFavorites(props.car.id)} />
+                    }
                 </CarDescription>
             </CarData>
         </CarContainer>

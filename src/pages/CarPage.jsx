@@ -7,10 +7,19 @@ export default function CarPage() {
 
     const [cars, setCars] = useState(carList);
 
+    const changeIsFavoriteByCarId = (carId, isFavorite) => {
+        for (let car of cars) {
+            if (car.id === carId) {
+                car.isFavorite = isFavorite;
+                break;
+            }
+        }
+    }
+
     return (
         <>
             <Navbar carsForRender={cars} setSearchCarsResult={setCars} allCars={carList} />
-            <CarList carList={cars} />
+            <CarList carList={cars} changeIsFavoriteByCarId={changeIsFavoriteByCarId} />
         </>
     );
 }
