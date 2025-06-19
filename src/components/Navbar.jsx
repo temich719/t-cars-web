@@ -38,7 +38,7 @@ const AppName = styled.div`
   right: 4%;
 `
 
-export default function Navbar({ carsForRender, setSearchCarsResult, allCars }) {
+export default function Navbar({ carsForRender, setSearchCarsResult, allCars, sortCars }) {
   return (
     <div style={{ position: 'fixed ', width: "100%" }}>
       <NavContainer>
@@ -48,7 +48,7 @@ export default function Navbar({ carsForRender, setSearchCarsResult, allCars }) 
         </NavElementsContainer>
         <AppName>T-Cars</AppName>
       </NavContainer>
-      <SearchCars carsForRender={carsForRender} setSearchCarsResult={setSearchCarsResult} allCars={allCars} />
+      <SearchCars carsForRender={carsForRender} setSearchCarsResult={setSearchCarsResult} allCars={allCars} sortCars={sortCars} />
     </div>
   );
 }

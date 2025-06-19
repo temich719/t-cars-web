@@ -107,8 +107,6 @@ export default function CarElement({ changeIsFavoriteByCarId, ...props }) {
         changeIsFavoriteByCarId(carId, false)
     }
 
-    console.log(`${props.car.name} = ${props.car.isFavorite}`);
-
     return (
         <CarContainer>
             <CarImageContainer>
@@ -117,13 +115,13 @@ export default function CarElement({ changeIsFavoriteByCarId, ...props }) {
             <CarData>
                 <CarMainData>
                     <CarName>{props.car.name}</CarName>
-                    <CarPrice>{props.car.price}</CarPrice>
+                    <CarPrice>${props.car.price}</CarPrice>
                 </CarMainData>
                 <CarDescription>
                     {props.car.description}
                     {props.car.isFavorite === false ?
                         <FcLikePlaceholder
-                            style={{ fontSize: "40px", marginRight: "8%", zIndex: 1 }}
+                            style={{ fontSize: "40px", marginRight: "8%" }}
                             onClick={() => addCarToFavorites(props.car.id)}
                         /> :
                         <AnimatedLikeIcon onClick={() => deleteCarFromFavorites(props.car.id)} />

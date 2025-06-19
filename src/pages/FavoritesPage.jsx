@@ -11,7 +11,11 @@ export default function FavoritesPage() {
 
     return (
         <>
-            <Navbar carsForRender={filteredCars} setSearchCarsResult={setFilteredCars} allCars={carList.filter(car => car.isFavorite === true)} />
+            <Navbar
+                carsForRender={filteredCars}
+                setSearchCarsResult={setFilteredCars}
+                allCars={carList.filter(car => car.isFavorite === true)}
+            />
             <CarList carList={filteredCars} />
         </>
     );
