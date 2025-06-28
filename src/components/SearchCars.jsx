@@ -63,6 +63,11 @@ export default function SearchCars({ carsForRender, setSearchCarsResult, allCars
         return cars.filter(car => car.name.toLowerCase().includes(query.toLowerCase()));
     }
 
+    const onChangeQueryHandler = (e) => {
+        setSortOrder("");
+        setSearchQuery(e.target.value);
+    }
+
     useEffect(() => {
         if (searchQuery.trim() === "") {
             setSearchCarsResult(allCars);
@@ -85,7 +90,7 @@ export default function SearchCars({ carsForRender, setSearchCarsResult, allCars
             >
                 <BsArrowUp />
             </SortCarsButton>
-            <CarSearchInput value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
+            <CarSearchInput value={searchQuery} onChange={onChangeQueryHandler} />
             <SortCarsButton
                 style={{
                     backgroundColor: sortOrder === DESC ? "#b1abab " : "white",
